@@ -103,13 +103,21 @@ Then access `http://localhost:8000` and update `API_BASE_URL` in `auth.js` to po
 
 ## Configuration
 
-### API Base URL
+### API Base URL (CRITICAL)
 
-The `API_BASE_URL` constant in `auth.js` determines which backend to communicate with:
+The `API_BASE_URL` at the top of `auth.js` determines which backend to communicate with:
 
 ```javascript
-const API_BASE_URL = 'https://your-railway-backend.up.railway.app';
+// === CONFIGURATION ===
+// Railway Backend URL (PRODUCTION)
+const API_BASE_URL = 'https://auth-security-backend-production.up.railway.app';
 ```
+
+**Important**: 
+- Update `API_BASE_URL` with your actual Railway project URL
+- Format: `https://your-project.up.railway.app` (HTTPS only, no localhost)
+- This is the ONLY place frontend communicates with backend
+- Changes take effect immediately after page reload
 
 ### Token Storage
 
@@ -118,6 +126,12 @@ Tokens are stored in browser localStorage under the key `auth_token`:
 ```javascript
 const TOKEN_KEY = 'auth_token';
 ```
+
+Tokens are automatically:
+- Stored after successful login
+- Retrieved when accessing protected pages
+- Sent in Authorization header as `Bearer <token>`
+- Cleared on logout or token expiration
 
 ## Security Notes
 
