@@ -10,9 +10,22 @@ This frontend implements a complete authentication flow with login and protected
 
 Note: This application intentionally includes security vulnerabilities for learning purposes. See the security section below.
 
+## Folder Structure
+
+```
+auth-security-frontend/
+├── index.html          ← ENTRY POINT (GitHub Pages serves this as root)
+├── dashboard.html      ← Protected dashboard after login
+├── auth.js             ← Authentication & API communication logic
+├── style.css           ← Dark cyber theme with neon accents
+└── README.md           ← This file
+```
+
+**Important**: `index.html` is the entry point that GitHub Pages automatically serves. All users access via `index.html` (or just `/` when deployed).
+
 ## Files
 
-- `login.html` - Login page with form validation and error handling
+- `index.html` - **ENTRY POINT** - Login page with form validation
 - `dashboard.html` - Protected dashboard showing authenticated user info
 - `auth.js` - JWT token handling and API communication logic
 - `style.css` - Dark theme styling with animations and responsive design
@@ -45,46 +58,48 @@ Note: This application intentionally includes security vulnerabilities for learn
 
 ## Setup
 
-### 1. Update Backend URL
+### Option 1: Local Development
 
-Edit `auth.js` and replace the placeholder URL:
-
-```javascript
-const API_BASE_URL = 'https://your-railway-backend.up.railway.app';
-```
-
-Replace with your actual Railway backend URL.
-
-### 2. Deploy to GitHub Pages
+Test locally before deploying to GitHub Pages:
 
 ```bash
-# Push to GitHub repository
-git add .
-git commit -m "Add frontend"
-git push origin main
-```
-
-Then enable GitHub Pages in repository settings:
-1. Go to Settings → Pages
-2. Select `main` branch as source
-3. Your site will be available at `https://yourusername.github.io/yourrepo`
-
-### 3. Local Testing
-
-Serve files locally (requires CORS-enabled backend):
-
-```bash
-# Using Python
+# Using Python 3
 python -m http.server 8000
 
-# Using Node.js
+# Or using Node.js
 npx http-server
 
-# Using Live Server (VS Code)
+# Or using VS Code Live Server
 # Right-click index.html → Open with Live Server
 ```
 
-Access at `http://localhost:8000` (or the port shown)
+Then access `http://localhost:8000` and update `API_BASE_URL` in `auth.js` to point to your local backend (e.g., `http://localhost:5000`)
+
+### Option 2: GitHub Pages Deployment
+
+1. **Configure Backend URL** in `auth.js`:
+   ```javascript
+   const API_BASE_URL = 'https://your-project.up.railway.app';
+   ```
+
+2. **Push to GitHub**:
+   ```bash
+   git add .
+   git commit -m "Add authentication frontend"
+   git push origin main
+   ```
+
+3. **Enable GitHub Pages**:
+   - Go to Repository Settings → Pages
+   - Select `main` branch as source
+   - GitHub automatically serves `index.html` at the root
+   - Site available at `https://yourusername.github.io/yourrepo`
+
+### Important: Entry Point
+
+- GitHub Pages automatically serves `index.html` when visiting the root URL
+- Users access `/` or `index.html` - both work (don't remove `index.html`)
+- All other files are referenced relatively (`dashboard.html`, `auth.js`, `style.css`)
 
 ## Configuration
 
