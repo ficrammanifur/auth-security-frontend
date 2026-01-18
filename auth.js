@@ -1,7 +1,7 @@
-// Configuration
-// UPDATE THIS with your actual Railway backend URL
-// Example: https://your-project.up.railway.app
-const API_BASE_URL = 'http://localhost:5000'; // Default for local development
+// === CONFIGURATION ===
+// Railway Backend URL (PRODUCTION)
+// Replace with your actual Railway project URL when deploying
+const API_BASE_URL = 'https://auth-security-backend-production.up.railway.app';
 const TOKEN_KEY = 'auth_token';
 
 // Login Handler
@@ -34,8 +34,7 @@ async function handleLogin(event) {
             body: JSON.stringify({
                 username: username,
                 password: password
-            }),
-            credentials: 'include'
+            })
         });
         
         const data = await response.json();
@@ -91,8 +90,7 @@ async function verifyAuth() {
             headers: {
                 'Authorization': `Bearer ${token}`,
                 'Content-Type': 'application/json'
-            },
-            credentials: 'include'
+            }
         });
         
         const data = await response.json();
