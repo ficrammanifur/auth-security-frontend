@@ -1,5 +1,7 @@
 // Configuration
-const API_BASE_URL = 'https://your-railway-backend.up.railway.app'; // Update this with your Railway URL
+// UPDATE THIS with your actual Railway backend URL
+// Example: https://your-project.up.railway.app
+const API_BASE_URL = 'http://localhost:5000'; // Default for local development
 const TOKEN_KEY = 'auth_token';
 
 // Login Handler
@@ -45,7 +47,10 @@ async function handleLogin(event) {
         // Store token in localStorage
         if (data.token) {
             localStorage.setItem(TOKEN_KEY, data.token);
-            console.log('[v0] Login successful, token stored');
+            console.log('[v0] Login successful, token stored:', {
+                username: data.username,
+                expiresIn: data.expiresIn
+            });
             
             // Redirect to dashboard
             setTimeout(() => {
