@@ -4,9 +4,11 @@ Modern, portfolio-grade frontend for JWT authentication learning. Pure HTML/CSS/
 
 ## Overview
 
-This frontend implements a complete authentication flow with login and protected dashboard pages. It demonstrates JWT token handling, localStorage management, and real-time API communication with the Flask backend.
+This frontend implements a complete authentication flow with login and protected dashboard pages. It's an **educational security lab** demonstrating JWT token handling, localStorage management, and API communication patterns.
 
 **Demo Credentials**: `admin` / `password123`
+
+Note: This application intentionally includes security vulnerabilities for learning purposes. See the security section below.
 
 ## Files
 
