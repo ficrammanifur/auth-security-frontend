@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Authentication Lab</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="background-animation"></div>
+
+    <main class="dashboard-container">
+        <div class="dashboard-card">
+            <div class="dashboard-header">
+                <div>
+                    <h1>Dashboard</h1>
+                    <p class="subtitle">Secure Protected Area</p>
+                </div>
+                <button class="btn-logout" id="logoutBtn">Logout</button>
+            </div>
+
+            <div class="status-section">
+                <div class="status-badge authenticated">
+                    <span class="badge-dot"></span>
+                    <span>Authenticated</span>
+                </div>
+                <p class="status-text" id="statusText">Loading...</p>
+            </div>
+
+            <div class="user-info">
+                <h2>User Information</h2>
+                <div class="info-box">
+                    <p><span class="label">Username:</span> <code id="displayUsername">-</code></p>
+                    <p><span class="label">Token Status:</span> <code id="tokenStatus">Valid</code></p>
+                    <p><span class="label">Page Type:</span> <code>Protected Endpoint</code></p>
+                </div>
+            </div>
+
+            <div class="security-note">
+                <h3>Security Note</h3>
+                <p>This page demonstrates a protected endpoint. The backend validates your JWT token on each request. Try refreshing the page - your authentication persists as long as the token is valid.</p>
+            </div>
+
+            <div id="errorAlert" class="alert alert-error hidden" role="alert">
+                <span id="errorMessage"></span>
+            </div>
+
+            <div id="loadingAlert" class="alert alert-info hidden" role="status">
+                <span>Verifying authentication...</span>
+            </div>
+        </div>
+    </main>
+
+    <script src="auth.js"></script>
+    <script>
+        document.getElementById('logoutBtn').addEventListener('click', handleLogout);
+        document.addEventListener('DOMContentLoaded', verifyAuth);
+    </script>
+</body>
+</html>
