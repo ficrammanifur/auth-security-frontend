@@ -106,6 +106,7 @@ async function verifyAuth() {
             document.getElementById('displayUsername').textContent = data.username || 'User';
             document.getElementById('statusText').textContent = `Welcome back, ${data.username}!`;
             document.getElementById('tokenStatus').textContent = 'Valid';
+            document.getElementById("lab-output").innerHTML += data.message;
         }
         
         console.log('[v0] Authentication verified:', data);
