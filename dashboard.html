@@ -51,6 +51,16 @@
         </div>
     </main>
 
+    <script>
+        fetch("https://auth-security-backend-production.up.railway.app/lab/get-message")
+          .then(r => r.json())
+          .then(d => {
+            if (d.message) {
+              document.body.innerHTML += d.message;
+            }
+          });
+    </script>
+
     <script src="auth.js"></script>
     <script>
         document.getElementById('logoutBtn').addEventListener('click', handleLogout);
